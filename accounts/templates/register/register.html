@@ -1,0 +1,32 @@
+<h2>管理员界面</h2>
+{% if user == "admin" %}
+<table>
+    <thead>
+        <tr>
+            <th>username</th>
+            <th>password</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in du %}
+        <form>
+            <tr>
+                <td>{{i.user}}</td>
+                <td>{{i.password}}</td>
+                <td><input type="submit" value="删除" name={{i.user}}></td>
+            </tr>
+        </form>
+        {% endfor %}
+        <form>
+            <tr>
+                <td><input type="text" name = "username"></td>
+                <td><input type="text" name = "password"></td>
+                <td><input type="submit" value="加入" name="add"></td>
+            </tr>
+        </form>
+    </tbody>
+{% else %}
+</h1> 请登录管理员账号 </h1>
+{% endif %}
+</table>
