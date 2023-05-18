@@ -35,7 +35,7 @@ def user_login(request):
             print(data[username][0],password)
             if (str(data[username][0]) == str(password)):
                 request.session['user_id'] = username
-                return redirect('home')
+                return redirect('main')
             else:
                 return render(request, 'register/login.html', {'error_message': '账号或密码错误'})
         else:
@@ -45,7 +45,7 @@ def user_login(request):
 
 def user_logout(request):
     del request.session['user_id']
-    return redirect('login')
+    return redirect('main')
 
 
 def home(request):
@@ -54,3 +54,10 @@ def home(request):
     except:
         user = ""
     return render(request, 'home.html', {'user' : user})
+
+def main(request):
+    try:
+        user = request.session['user_id']
+    except:
+        user = ""
+    return render(request, 'main.html', {'user' : user})
